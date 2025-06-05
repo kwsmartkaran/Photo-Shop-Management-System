@@ -1,0 +1,133 @@
+git clone https://github.com/yourusername/photo-shop-management.git
+cd photo-shop-management
+npm install
+npm start
+/src
+  /components
+    Dashboard.js
+    OrderManagement.js
+    PhotoEditor.js
+    Inventory.js
+  /styles
+    main.css
+  App.js
+  index.js
+  import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import OrderManagement from './components/OrderManagement';
+import PhotoEditor from './components/PhotoEditor';
+import Inventory from './components/Inventory';
+import './styles/main.css';
+
+function App() {
+  return (
+    <Router>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<OrderManagement />} />
+          <Route path="/editor" element={<PhotoEditor />} />
+          <Route path="/inventory" element={<Inventory />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+            import React from 'react';
+
+const Dashboard = () => {
+  const stats = {
+    ordersToday: 15,
+    revenue: 1250,
+    pendingApprovals: 3
+  };
+
+  return (
+    <div className="dashboard">
+      <h1>Photo Shop Dashboard</h1>
+      <div className="stats-grid">
+        <div className="stat-card">
+          <h3>Today's Orders</h3>
+          <p>{stats.ordersToday}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Revenue</h3>
+          <p>${stats.revenue}</p>
+        </div>
+        <div className="stat-card">
+          <h3>Pending Approvals</h3>
+          <p>{stats.pendingApprovals}</p>
+        </div>
+      </div>
+      <div className="quick-actions">
+        <button className="primary-btn">New Order</button>
+        <button className="primary-btn">Check Inventory</button>
+        <button className="secondary-btn">View Calendar</button>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;
+            :root {
+  --primary-color: #2C3E50;
+  --secondary-color: #1ABC9C;
+  --text-color: #333;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  padding: 20px;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.primary-btn {
+  background: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.secondary-btn {
+  background: white;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+            "homepage": "https://yourusername.github.io/photo-shop-management"
+            npm install gh-pages --save-dev
+            "predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+            npm run deploy
